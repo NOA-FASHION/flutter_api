@@ -1,0 +1,1 @@
+String baseUrl = 'https://backend-strapi.online/api-flutter';
