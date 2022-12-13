@@ -3,6 +3,7 @@ import 'package:flutter_api/controller/dashboard_controller.dart';
 import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
 import 'package:get/get.dart';
 
+import '../account/account_screen.dart';
 import '../missions/mission_screen.dart';
 import '../users/user_screen.dart';
 
@@ -17,12 +18,10 @@ class DashboardScreen extends StatelessWidget {
         body: SafeArea(
           child: IndexedStack(
             index: controller.tabIndex,
-            children: [
+            children: const [
               Mission(),
-             UserSreen(),
-              Container(
-                color: Colors.yellow,
-              ),
+              UserSreen(),
+              AccountScreen(),
             ],
           ),
         ),

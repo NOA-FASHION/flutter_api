@@ -2,21 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 
-import '../../controller/controller.dart';
-import 'mission_to_account/mission_account_screen.dart';
+import '../../../controller/controller.dart';
+import '../../../model/model_mission.dart';
 
-class ListUserSreen extends StatefulWidget {
-  const ListUserSreen({Key? key}) : super(key: key);
+class ListMissionAccountUser extends StatefulWidget {
+  final String userMail;
+  const ListMissionAccountUser({Key? key, required this.userMail})
+      : super(key: key);
 
   @override
-  State<ListUserSreen> createState() => _ListMissionState();
+  State<ListMissionAccountUser> createState() => _ListMissionAccountUserState();
 }
 
-class _ListMissionState extends State<ListUserSreen> {
+class _ListMissionAccountUserState extends State<ListMissionAccountUser> {
   @override
   Widget build(BuildContext context) {
     return Obx(() {
-      if (userController.UserList.isEmpty) {
+      if (missionsController.MissionList.isEmpty) {
         return Container(
           alignment: Alignment.center,
           child: Text(
@@ -26,9 +28,13 @@ class _ListMissionState extends State<ListUserSreen> {
           ),
         );
       }
+      String accountToken = widget.userMail;
+      List<ModelMission>? MissionListPerAccount;
 
+      MissionListPerAccount = missionsController.MissionList.where(
+          (c) => c.emailUser.contains(accountToken)).toList();
       return ListView.builder(
-        itemCount: userController.UserList.length,
+        itemCount: MissionListPerAccount.length,
         itemBuilder: (context, index) {
           return Padding(
             padding: const EdgeInsets.only(bottom: 3.0, left: 8.0, right: 8.0),
@@ -150,13 +156,7 @@ class _ListMissionState extends State<ListUserSreen> {
                   ),
                   elevation: 20.0,
                   child: ListTile(
-                    onTap: () async {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => MissionAccountScreen(
-                                  user: userController.UserList[index])));
-                    },
+                    onTap: () async {},
                     title: Container(
                       child: Row(
                         children: [
@@ -170,7 +170,7 @@ class _ListMissionState extends State<ListUserSreen> {
                               child: Row(
                                 children: [
                                   Text(
-                                    "Compte ".toUpperCase(),
+                                    "Nom ".toUpperCase(),
                                     style: const TextStyle(
                                         fontWeight: FontWeight.bold,
                                         color: Colors.purple),
@@ -178,7 +178,7 @@ class _ListMissionState extends State<ListUserSreen> {
                                   const SizedBox(
                                     width: 5.0,
                                   ),
-                                  Text(userController.UserList[index].email)
+                                  Text(MissionListPerAccount![index].name)
                                 ],
                               ),
                             ),
@@ -196,7 +196,7 @@ class _ListMissionState extends State<ListUserSreen> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             const Text(
-                              "Role",
+                              "Description",
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   color: Colors.purple),
@@ -204,7 +204,7 @@ class _ListMissionState extends State<ListUserSreen> {
                             const SizedBox(
                               width: 10.0,
                             ),
-                            Text(userController.UserList[index].role[0]),
+                            Text(MissionListPerAccount[index].description),
                           ],
                         ),
                         Row(
@@ -212,7 +212,7 @@ class _ListMissionState extends State<ListUserSreen> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             const Text(
-                              "id",
+                              "Affecté à ",
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   color: Colors.purple),
@@ -220,7 +220,7 @@ class _ListMissionState extends State<ListUserSreen> {
                             const SizedBox(
                               width: 10.0,
                             ),
-                            Text(userController.UserList[index].id.toString()),
+                            Text(MissionListPerAccount[index].emailUser),
                           ],
                         ),
                       ],

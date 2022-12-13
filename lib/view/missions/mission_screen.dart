@@ -61,6 +61,7 @@ class _MissionState extends State<Mission> {
 
   FloatingActionButton buildBottomSheet() {
     return FloatingActionButton(
+        heroTag: null,
         // child: Lottie.asset('assets/float.json'),
         child: const Icon(Icons.add),
         backgroundColor: Colors.orange[900],
@@ -186,13 +187,15 @@ class _MissionState extends State<Mission> {
                                         padding: const EdgeInsets.all(5),
                                         child: Row(
                                           children: <Widget>[
-                                            const SizedBox(
-                                              width: 20,
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.all(4.0),
+                                              child: Text(
+                                                  dropDownStringItem.email,
+                                                  style: const TextStyle(
+                                                      color: Colors.black,
+                                                      fontSize: 15)),
                                             ),
-                                            Text(dropDownStringItem.email,
-                                                style: const TextStyle(
-                                                    color: Colors.black,
-                                                    fontSize: 10)),
                                           ],
                                         ),
                                       ),

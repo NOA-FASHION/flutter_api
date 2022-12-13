@@ -34,8 +34,8 @@ class LoginViewModel extends GetxController {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: new Text("Alert!!"),
-            content: new Text("erreur login"),
+            title: const Text("Alert!!"),
+            content: const Text("erreur login"),
             actions: <Widget>[
               TextButton(
                 child: const Text("OK"),
@@ -60,8 +60,8 @@ class LoginViewModel extends GetxController {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: new Text("Alert!!"),
-            content: new Text("Error registration"),
+            title: const Text("Alert!!"),
+            content: const Text("Error registration"),
             actions: <Widget>[
               TextButton(
                 child: const Text("OK"),
