@@ -4,7 +4,7 @@ import 'package:jwt_decoder/jwt_decoder.dart';
 
 import '../model/model_mission.dart';
 import '../model/model_token_jwt.dart';
-import 'login/authentication_manager.dart';
+import 'login/authentication_controler.dart';
 
 class MissionController extends GetxController {
   static MissionController instance = Get.find();

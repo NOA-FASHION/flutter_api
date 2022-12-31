@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:get/get.dart';
-import '../../controller/login/authentication_manager.dart';
+import '../../controller/login/authentication_controler.dart';
 import 'const.dart';
 
 class RemoteUserService {

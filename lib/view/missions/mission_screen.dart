@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../controller/controller.dart';
-import '../../controller/login/authentication_manager.dart';
+import '../../controller/login/authentication_controler.dart';
 import '../../model/model_user.dart';
 import 'list_mission.dart';
 

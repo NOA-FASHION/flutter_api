@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'login_view_model.dart';
+import '../../controller/login/login_controller.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({Key? key}) : super(key: key);
@@ -12,7 +12,7 @@ class LoginView extends StatefulWidget {
 
 class _LoginViewState extends State<LoginView> {
   final GlobalKey<FormState> formKey = GlobalKey();
-  LoginViewModel _viewModel = Get.put(LoginViewModel());
+  final LoginController _viewModel = Get.put(LoginController());
 
   TextEditingController emailCtr = TextEditingController();
   TextEditingController passwordCtr = TextEditingController();
@@ -22,7 +22,9 @@ class _LoginViewState extends State<LoginView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: _formType == FormType.login ? Text('Login') : Text('Register'),
+        title: _formType == FormType.login
+            ? const Text('Login')
+            : const Text('Register'),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 12.0),
@@ -60,6 +62,9 @@ class _LoginViewState extends State<LoginView> {
           decoration: inputDecoration('Password', Icons.lock),
         ),
         ElevatedButton(
+          style: ButtonStyle(
+              backgroundColor:
+                  MaterialStateProperty.all(Theme.of(context).primaryColor)),
           onPressed: () async {
             if (formKey.currentState?.validate() ?? false) {
               await _viewModel.loginUser(
@@ -121,6 +126,9 @@ class _LoginViewState extends State<LoginView> {
           decoration: inputDecoration('Retype Password', Icons.lock),
         ),
         ElevatedButton(
+          style: ButtonStyle(
+              backgroundColor:
+                  MaterialStateProperty.all(Theme.of(context).primaryColor)),
           onPressed: () async {
             if (formKey.currentState?.validate() ?? false) {
               await _viewModel.registerUser(

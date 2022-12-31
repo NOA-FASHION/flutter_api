@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 
 import '../model/model_user.dart';
 import '../service/remote_service/remote_user_service.dart';
-import 'login/authentication_manager.dart';
+import 'login/authentication_controler.dart';
 
 class UserController extends GetxController {
   static UserController instance = Get.find();

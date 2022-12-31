@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../controller/login/authentication_manager.dart';
+import '../controller/login/authentication_controler.dart';
 import '../onboard.dart';
 
 

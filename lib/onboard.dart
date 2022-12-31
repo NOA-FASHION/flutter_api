@@ -5,7 +5,7 @@ import 'package:flutter_api/view/login/login_view.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 
-import 'controller/login/authentication_manager.dart';
+import 'controller/login/authentication_controler.dart';
 import 'route/app_page.dart';
 import 'view/dashboard/dashboard_screen.dart';
 
@@ -25,7 +25,7 @@ class OnBoard extends StatelessWidget {
               theme: AppTheme.lightTheme,
               themeMode: ThemeMode.light,
             )
-          : LoginView();
+          : const LoginView();
     });
   }
 }
